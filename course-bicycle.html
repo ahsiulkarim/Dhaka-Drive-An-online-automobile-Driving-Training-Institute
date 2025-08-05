@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bicycle Safety Program - Dhaka Drive</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">Dhaka Drive</a>
+            <nav id="main-nav"></nav>
+        </div>
+    </header>
+    <section id="course-detail">
+        <div class="container">
+            <div class="course-detail-header">
+                <img src="Picture/Bicyle.png" alt="Bicycle Safety Program">
+                <div class="header-info">
+                    <h1>Bicycle Safety Program</h1>
+                    <p class="course-price-display">Price: BDT 1,000</p>
+                    <p>Learn to ride a bicycle or improve your road safety skills with our program for all ages. We make learning fun and focus on building habits that ensure a lifetime of safe cycling.</p>
+                    <button class="btn request-btn" data-course="Bicycle Safety Program">Request to Enroll</button>
+                </div>
+            </div>
+            <div class="course-detail-body">
+                <div class="detail-section">
+                    <h2>What You'll Learn</h2>
+                    <ul>
+                        <li>Learning to balance and pedal from scratch. [7]</li>
+                        <li>Proper braking and controlled stopping. [7]</li>
+                        <li>Using hand signals for turning and stopping. [7]</li>
+                        <li>Understanding basic road signs and traffic rules for cyclists. [3]</li>
+                        <li>How to wear a helmet correctly and perform bike safety checks.</li>
+                        <li>Tips for sharing the road safely with cars and pedestrians. [3]</li>
+                    </ul>
+                </div>
+                <div class="detail-section">
+                    <h2>Course Structure</h2>
+                    <p><strong>Total Duration:</strong> 6 Hours</p>
+                    <p><strong>Schedule:</strong> 4 classes, 1.5 hours each (Weekend batches available)</p>
+                    <p><strong>Includes:</strong></p>
+                    <ul>
+                        <li>Bicycles of various sizes to suit all learners.</li>
+                        <li>Safety helmets and protective pads.</li>
+                        <li>Instruction in a safe, traffic-free environment.</li>
+                        <li>A friendly, patient instructor for children and adults.</li>
+                        <li>A certificate of completion.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer><div class="container"><p>© 2024 Dhaka Drive. All Rights Reserved.</p></div></footer>
+
+    <!-- Modals -->
+    <div id="price-confirm-modal" class="modal-overlay" style="display:none;"><div class="modal-content"><span class="close-modal">×</span><h2 class="modal-title">Course Enrollment Confirmation</h2><div id="price-details-content"><p>You are about to request enrollment in the following course:</p><h3 id="modal-price-course-name" class="modal-course-title">Course Name Here</h3><p class="course-price-display">Price: BDT <span id="modal-course-price">0</span></p><p>Please confirm to proceed. No payment is required at this stage.</p></div><button id="confirm-price-btn" class="btn">Confirm & Proceed</button></div></div>
+    <div id="request-modal" class="modal-overlay" style="display:none;"><div class="modal-content"><span class="close-modal">×</span><h2 class="modal-title">Enrollment Request: <span id="modal-request-course-name"></span></h2><form id="request-form"><div class="form-group"><label for="user-location">Your Preferred Location</label><input type="text" id="user-location" placeholder="e.g., Mirpur, Gulshan, Uttara" required></div><button type="submit" class="btn">Submit Request</button></form></div></div>
+    <div id="notification-modal" class="modal-overlay"><div class="modal-content"><span class="close-modal">×</span><h2 class="modal-title">My Notifications</h2><div id="notification-list" class="dashboard-list"></div></div></div>
+
+    <script src="app.js"></script>
+</body>
+</html>

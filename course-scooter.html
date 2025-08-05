@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scooter Riding Lessons - Dhaka Drive</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">Dhaka Drive</a>
+            <nav id="main-nav"></nav>
+        </div>
+    </header>
+    <section id="course-detail">
+        <div class="container">
+            <div class="course-detail-header">
+                <img src="https://placehold.co/800x500/E8E8E8/444?text=Scooter+Riding+Lessons" alt="Scooter Riding Lessons">
+                <div class="header-info">
+                    <h1>Scooter Riding Lessons</h1>
+                    <p class="course-price-display">Price: BDT 2,500</p>
+                    <p>The perfect choice for easy city commuting. Our scooter lessons are designed for students, office-goers, and anyone looking for a hassle-free way to learn to ride.</p>
+                    <button class="btn request-btn" data-course="Scooter Riding Lessons">Request to Enroll</button>
+                </div>
+            </div>
+            <div class="course-detail-body">
+                <div class="detail-section">
+                    <h2>What You'll Learn</h2>
+                    <ul>
+                        <li>Automatic scooter controls: throttle, brakes, and indicators</li>
+                        <li>Achieving stable balance at low and medium speeds</li>
+                        <li>Effortless handling and turning in city traffic</li>
+                        <li>Safe braking and stopping techniques</li>
+                        <li>Building confidence for daily commuting</li>
+                        <li>Basic road safety and awareness</li>
+                    </ul>
+                </div>
+                <div class="detail-section">
+                    <h2>Course Structure</h2>
+                    <p><strong>Total Duration:</strong> 12 Hours</p>
+                    <p><strong>Schedule:</strong> 8 classes, 1.5 hours each</p>
+                    <p><strong>Includes:</strong></p>
+                    <ul>
+                        <li>Use of a modern, easy-to-handle automatic scooter</li>
+                        <li>Provision of a certified safety helmet</li>
+                        <li>Patient and friendly one-on-one instruction</li>
+                        <li>Focus on practical skills for urban riding</li>
+                        <li>Flexible scheduling to suit your needs</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer><div class="container"><p>© 2025 Dhaka Drive. All Rights Reserved.</p></div></footer>
+
+    <!-- Modals -->
+    <div id="price-confirm-modal" class="modal-overlay"><div class="modal-content"><span class="close-modal">×</span><h2 class="modal-title">Course Enrollment Confirmation</h2><div id="price-details-content"><p>You are about to request enrollment in the following course:</p><h3 id="modal-price-course-name" class="modal-course-title">Course Name Here</h3><p class="course-price-display">Price: BDT <span id="modal-course-price">0</span></p><p>Please confirm to proceed. No payment is required at this stage.</p></div><button id="confirm-price-btn" class="btn">Confirm & Proceed</button></div></div>
+    <div id="request-modal" class="modal-overlay"><div class="modal-content"><span class="close-modal">×</span><h2 class="modal-title">Enrollment Request: <span id="modal-request-course-name"></span></h2><form id="request-form"><div class="form-group"><label for="user-location">Your Preferred Location</label><input type="text" id="user-location" placeholder="e.g., Dhanmondi, Gulshan, Uttara" required></div><button type="submit" class="btn">Submit Request</button></form></div></div>
+    <div id="notification-modal" class="modal-overlay"><div class="modal-content"><span class="close-modal">×</span><h2 class="modal-title">My Notifications</h2><div id="notification-list" class="dashboard-list"></div></div></div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motorcycle Riding Course - Dhaka Drive</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">Dhaka Drive</a>
+            <nav id="main-nav"></nav>
+        </div>
+    </header>
+    <section id="course-detail">
+        <div class="container">
+            <div class="course-detail-header">
+                <img src="Picture/BIKE.png" alt="Motorcycle Riding Course">
+                <div class="header-info">
+                    <h1>Motorcycle Riding Course</h1>
+                    <p class="course-price-display">Price: BDT 3,000</p>
+                    <p>Master the art of two-wheeling with our comprehensive motorcycle course. Ideal for new riders, we focus on building your confidence, control, and road safety awareness to handle Dhaka's dynamic traffic.</p>
+                    <button class="btn request-btn" data-course="Motorcycle Riding Course">Request to Enroll</button>
+                </div>
+            </div>
+            <div class="course-detail-body">
+                <div class="detail-section">
+                    <h2>What You'll Learn</h2>
+                    <ul>
+                        <li>Motorcycle controls and pre-ride checks. [1]</li>
+                        <li>Slow speed control, balancing, and maneuvering. [1]</li>
+                        <li>Proper gear shifting and braking techniques. [5]</li>
+                        <li>Executing safe turns and U-turns. [1]</li>
+                        <li>Emergency braking and hazard avoidance. [5]</li>
+                        <li>Strategies for safe lane positioning and traffic navigation.</li>
+                    </ul>
+                </div>
+                <div class="detail-section">
+                    <h2>Course Structure</h2>
+                    <p><strong>Total Duration:</strong> 15 Hours</p>
+                    <p><strong>Schedule:</strong> 10 classes, 1.5 hours each</p>
+                    <p><strong>Includes:</strong></p>
+                    <ul>
+                        <li>Training on a 100cc-150cc motorcycle.</li>
+                        <li>Provision of a DOT-approved helmet and safety gear.</li>
+                        <li>One-on-one sessions with a certified motorcycle instructor.</li>
+                        <li>Complete guidance for BRTA license application.</li>
+                        <li>A final mock test to prepare for the official exam.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer><div class="container"><p>© 2024 Dhaka Drive. All Rights Reserved.</p></div></footer>
+
+    <!-- Modals -->
+    <div id="price-confirm-modal" class="modal-overlay" style="display:none;"><div class="modal-content"><span class="close-modal">×</span><h2 class="modal-title">Course Enrollment Confirmation</h2><div id="price-details-content"><p>You are about to request enrollment in the following course:</p><h3 id="modal-price-course-name" class="modal-course-title">Course Name Here</h3><p class="course-price-display">Price: BDT <span id="modal-course-price">0</span></p><p>Please confirm to proceed. No payment is required at this stage.</p></div><button id="confirm-price-btn" class="btn">Confirm & Proceed</button></div></div>
+    <div id="request-modal" class="modal-overlay" style="display:none;"><div class="modal-content"><span class="close-modal">×</span><h2 class="modal-title">Enrollment Request: <span id="modal-request-course-name"></span></h2><form id="request-form"><div class="form-group"><label for="user-location">Your Preferred Location</label><input type="text" id="user-location" placeholder="e.g., Mirpur, Gulshan, Uttara" required></div><button type="submit" class="btn">Submit Request</button></form></div></div>
+    <div id="notification-modal" class="modal-overlay"><div class="modal-content"><span class="close-modal">×</span><h2 class="modal-title">My Notifications</h2><div id="notification-list" class="dashboard-list"></div></div></div>
+
+    <script src="app.js"></script>
+</body>
+</html>

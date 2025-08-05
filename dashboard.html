@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard - Dhaka Drive</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">Dhaka Drive</a>
+            <nav id="main-nav"></nav>
+        </div>
+    </header>
+    <section id="dashboard">
+        <div class="container">
+            <h1 id="welcome-message">Welcome, User!</h1>
+            <div class="dashboard-grid">
+                <div class="main-content">
+                    <!-- Dashboard Tabs -->
+                    <div class="dashboard-tabs">
+                        <button class="dash-tab-link active" data-tab="dash-courses">My Courses</button>
+                        <button class="dash-tab-link" data-tab="dash-materials">Learning Materials</button>
+                        <button class="dash-tab-link" data-tab="dash-support">My Messages</button>
+                    </div>
+
+                    <!-- Tab Content -->
+                    <div id="dash-courses" class="dash-tab-content active">
+                        <div id="my-courses-list" class="dashboard-list">
+                            <p>Loading courses...</p>
+                        </div>
+                    </div>
+                    <div id="dash-materials" class="dash-tab-content">
+                         <div class="dashboard-section">
+                            <h2 class="section-title">My Learning Materials</h2>
+                            <div id="learning-materials-list" class="dashboard-list">
+                                <p>Materials become available once your course enrollment is approved.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="dash-support" class="dash-tab-content">
+                        <div class="dashboard-section support-section">
+                            <h2 class="section-title">Conversation with Admin</h2>
+                            <div id="user-conversation-thread">
+                                <!-- User's messages will be rendered here -->
+                            </div>
+                            <form id="support-form">
+                                <div class="form-group">
+                                    <label for="support-message">Send a new message</label>
+                                    <textarea id="support-message" rows="3" required placeholder="Type your message..."></textarea>
+                                </div>
+                                <button type="submit" class="btn">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <aside class="sidebar-content">
+                    <div class="dashboard-section">
+                        <h2 class="section-title">Account Settings</h2>
+                        <form id="profile-update-form">
+                            <div class="form-group"><label for="profile-name">Full Name</label><input type="text" id="profile-name" required></div>
+                            <div class="form-group"><label for="profile-mobile">Mobile Number</label><input type="tel" id="profile-mobile" required></div>
+                            <div class="form-group"><label for="profile-address">Address</label><textarea id="profile-address" rows="3" placeholder="Enter your full address"></textarea></div>
+                            <button type="submit" class="btn btn-sm">Update Profile</button>
+                        </form>
+                        <hr class="divider">
+                        <form id="document-submit-form">
+                             <div class="form-group"><label for="user-document-number">NID / Passport Number</label><input type="text" id="user-document-number" placeholder="Enter document number"></div>
+                            <div class="form-group"><label for="user-document-file">Upload Document (JPG, PNG, PDF)</label><input type="file" id="user-document-file" accept=".jpg, .jpeg, .png, .pdf"><span id="file-info" class="file-info-text"></span></div>
+                            <button type="submit" class="btn btn-sm">Save Document Info</button>
+                        </form>
+                        <hr class="divider">
+                        <div class="danger-zone"><p>This will deactivate your account. You will not be able to log in again.</p><button id="delete-account-btn" class="btn btn-sm btn-danger">Deactivate My Account</button></div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modals -->
+    <div id="notification-modal" class="modal-overlay"><div class="modal-content"><span class="close-modal">×</span><h2 class="modal-title">My Notifications</h2><div id="notification-list" class="dashboard-list"></div></div></div>
+    <div id="schedule-modal" class="modal-overlay"><div class="modal-content"><span class="close-modal">×</span><h2 class="modal-title">Schedule Your Class</h2><p>Select a preferred time slot. We will do our best to accommodate.</p><form id="schedule-form"><input type="hidden" id="schedule-enrollment-id"><div class="form-group"><label for="time-slot">Available Slots</label><select id="time-slot" required><option value="Sat-Mon 9AM-11AM">Sat & Mon, 9AM - 11AM</option><option value="Sun-Tue 11AM-1PM">Sun & Tue, 11AM - 1PM</option><option value="Wed-Thu 2PM-4PM">Wed & Thu, 2PM - 4PM</option><option value="Fri 10AM-1PM">Friday, 10AM - 1PM (Weekend Batch)</option></select></div><button type="submit" class="btn">Confirm Schedule</button></form></div></div>
+    
+    <!-- Payment Modal -->
+    <div id="payment-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <span class="close-modal">×</span>
+            <h2 class="modal-title">Complete Your Payment</h2>
+            <p class="text-center">For Course: <strong id="payment-course-name"></strong></p>
+            <p class="course-price-display">Amount: BDT <span id="payment-course-price"></span></p>
+
+            <input type="hidden" id="payment-enrollment-id">
+
+            <div class="payment-tabs">
+                <button class="payment-tab-link active" data-tab="pay-mfs">MFS (bKash/Nagad)</button>
+                <button class="payment-tab-link" data-tab="pay-card">Card (Visa/Mastercard)</button>
+                <button class="payment-tab-link" data-tab="pay-cash">Pay in Person</button>
+            </div>
+
+            <div id="pay-mfs" class="payment-tab-content active">
+                <form id="mfs-payment-form">
+                    <p>Please send the payment to our Merchant bKash/Nagad number: <strong>01700-000000</strong></p>
+                    <p>Use your mobile number as the reference.</p>
+                    <div class="form-group">
+                        <label for="mfs-trx-id">Enter Transaction ID (TrxID)</label>
+                        <input type="text" id="mfs-trx-id" placeholder="e.g., 9J8K7L6M5N" required>
+                    </div>
+                    <button type="submit" class="btn">Submit Payment Info</button>
+                </form>
+            </div>
+            <div id="pay-card" class="payment-tab-content">
+                <form id="card-payment-form">
+                     <div class="form-group">
+                        <label for="card-number">Card Number</label>
+                        <input type="text" id="card-number" placeholder="XXXX XXXX XXXX XXXX" required>
+                    </div>
+                    <div class="form-group-row">
+                        <div class="form-group">
+                            <label for="card-expiry">Expiry (MM/YY)</label>
+                            <input type="text" id="card-expiry" placeholder="MM/YY" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="card-cvc">CVC</label>
+                            <input type="text" id="card-cvc" placeholder="123" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn">Pay Now (Simulated)</button>
+                </form>
+            </div>
+            <div id="pay-cash" class="payment-tab-content">
+                <p class="text-center">You can choose to pay with cash during your first class. Please note that your class schedule can only be confirmed after the payment is received by the instructor.</p>
+                <form id="cash-payment-form">
+                    <button type="submit" class="btn">I Will Pay in Person</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>

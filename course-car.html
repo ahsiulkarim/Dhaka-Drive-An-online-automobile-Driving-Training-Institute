@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Driving Course - Dhaka Drive</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">Dhaka Drive</a>
+            <nav id="main-nav"></nav>
+        </div>
+    </header>
+    <section id="course-detail">
+        <div class="container">
+            <div class="course-detail-header">
+                <img src="Picture/CAR.png" alt="Car Driving Course">
+                <div class="header-info">
+                    <h1>Car Driving Course (Manual & Auto)</h1>
+                    <p class="course-price-display">Price: BDT 5,000</p>
+                    <p>Our most popular course, designed to take you from a complete novice to a confident, safe, and licensed driver. We cover everything you need to know to navigate the streets of Bangladesh.</p>
+                    <button class="btn request-btn" data-course="Car Driving Course">Request to Enroll</button>
+                </div>
+            </div>
+            <div class="course-detail-body">
+                <div class="detail-section">
+                    <h2>What You'll Learn</h2>
+                    <ul>
+                        <li>Vehicle basics: steering, pedals, gears (manual & auto)</li>
+                        <li>Starting, stopping, and slow-speed maneuvering</li>
+                        <li>Essential parking techniques: parallel, reverse, 90-degree</li>
+                        <li>Navigating intersections, roundabouts, and U-turns</li>
+                        <li>Understanding and following all BRTA traffic rules and signals</li>
+                        <li>Defensive driving strategies for city and highway conditions</li>
+                    </ul>
+                </div>
+                <div class="detail-section">
+                    <h2>Course Structure</h2>
+                    <p><strong>Total Duration:</strong> 18 Hours</p>
+                    <p><strong>Schedule:</strong> 12 classes, 1.5 hours each</p>
+                    <p><strong>Includes:</strong></p>
+                    <ul>
+                        <li>Use of a modern, dual-control training vehicle</li>
+                        <li>All fuel and maintenance costs</li>
+                        <li>One-on-one instruction with a certified trainer</li>
+                        <li>Full assistance with the BRTA learner's permit and final license application</li>
+                        <li>One mock test simulating the official BRTA exam</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer><div class="container"><p>© 2024 Dhaka Drive. All Rights Reserved.</p></div></footer>
+
+    <!-- Modals from index.html are needed here for the enrollment flow -->
+    <div id="price-confirm-modal" class="modal-overlay" style="display:none;"><div class="modal-content"><span class="close-modal">×</span><h2 class="modal-title">Course Enrollment Confirmation</h2><div id="price-details-content"><p>You are about to request enrollment in the following course:</p><h3 id="modal-price-course-name" class="modal-course-title">Course Name Here</h3><p class="course-price-display">Price: BDT <span id="modal-course-price">0</span></p><p>Please confirm to proceed. No payment is required at this stage.</p></div><button id="confirm-price-btn" class="btn">Confirm & Proceed</button></div></div>
+    <div id="request-modal" class="modal-overlay" style="display:none;"><div class="modal-content"><span class="close-modal">×</span><h2 class="modal-title">Enrollment Request: <span id="modal-request-course-name"></span></h2><form id="request-form"><div class="form-group"><label for="user-location">Your Preferred Location</label><input type="text" id="user-location" placeholder="e.g., Mirpur, Gulshan, Uttara" required></div><button type="submit" class="btn">Submit Request</button></form></div></div>
+    <div id="notification-modal" class="modal-overlay"><div class="modal-content"><span class="close-modal">×</span><h2 class="modal-title">My Notifications</h2><div id="notification-list" class="dashboard-list"></div></div></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
