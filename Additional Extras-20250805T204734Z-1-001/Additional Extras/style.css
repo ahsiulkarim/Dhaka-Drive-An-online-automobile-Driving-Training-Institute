@@ -41,7 +41,7 @@ nav { display: flex; align-items: center; gap: 1.5rem; }
 nav a { color: var(--text-color); text-decoration: none; font-weight: 600; transition: color 0.3s ease; }
 nav a:hover { color: var(--secondary-color); }
 
-#hero { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(https://placehold.co/1920x1080/444/FFF?text=Dhaka+City+Driving) no-repeat center center/cover; color: var(--light-color); height: 60vh; display: flex; justify-content: center; align-items: center; text-align: center; }
+#hero { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(https://placehold.co/1920x1080/444/FFF?text=Dhaka+Driving+Institute) no-repeat center center/cover; color: var(--light-color); height: 60vh; display: flex; justify-content: center; align-items: center; text-align: center; }
 #hero h1 { font-size: 3rem; margin-bottom: 1rem; }
 #hero p { font-size: 1.2rem; max-width: 600px; margin: 0 auto 2rem auto; }
 
