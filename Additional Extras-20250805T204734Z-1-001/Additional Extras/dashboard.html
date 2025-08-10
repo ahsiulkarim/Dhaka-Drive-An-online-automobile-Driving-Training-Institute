@@ -16,9 +16,42 @@
     </header>
     <section id="dashboard">
         <div class="container">
-            <h1 id="welcome-message">Welcome, User!</h1>
+            <div class="dashboard-header">
+                <div class="profile-summary">
+                    <img src="profile.jpg" alt="Profile Picture" class="profile-pic">
+                    <div>
+                        <h1 id="welcome-message">Welcome, User!</h1>
+                        <p>Course Progress: <span id="course-progress">60%</span></p>
+                        <p>Next Class: <span id="next-class">Mon, Aug 18, 9AM</span></p>
+                    </div>
+                </div>
+                <div class="quick-actions">
+                    <button class="btn" id="schedule-class-btn">Schedule Class</button>
+                    <button class="btn" id="make-payment-btn">Make Payment</button>
+                    <button class="btn" id="contact-support-btn">Contact Support</button>
+                </div>
+            </div>
             <div class="dashboard-grid">
                 <div class="main-content">
+                    <!-- Notifications Panel -->
+                    <div class="dashboard-section notifications-panel">
+                        <h2 class="section-title">Notifications</h2>
+                        <ul id="notifications-list">
+                            <li>Payment received for Basic Driving Course.</li>
+                            <li>Your next class is scheduled for Mon, Aug 18.</li>
+                            <li>Document verification pending.</li>
+                        </ul>
+                    </div>
+                    <!-- Recent Activity -->
+                    <div class="dashboard-section recent-activity">
+                        <h2 class="section-title">Recent Activity</h2>
+                        <ul id="recent-activity-list">
+                            <li>Logged in from Chrome on Windows.</li>
+                            <li>Updated profile address.</li>
+                            <li>Uploaded NID document.</li>
+                        </ul>
+                    </div>
+
                     <!-- Dashboard Tabs -->
                     <div class="dashboard-tabs">
                         <button class="dash-tab-link active" data-tab="dash-courses">My Courses</button>
@@ -57,6 +90,23 @@
                     </div>
                 </div>
                 <aside class="sidebar-content">
+                    <!-- Class Schedule -->
+                    <div class="dashboard-section class-schedule">
+                        <h2 class="section-title">Upcoming Classes</h2>
+                        <ul id="class-schedule-list">
+                            <li>Mon, Aug 18, 9AM - Basic Driving</li>
+                            <li>Wed, Aug 20, 2PM - Traffic Rules</li>
+                            <li>Fri, Aug 22, 10AM - Practical Session</li>
+                        </ul>
+                    </div>
+                    <!-- Payment History -->
+                    <div class="dashboard-section payment-history">
+                        <h2 class="section-title">Payment History</h2>
+                        <ul id="payment-history-list">
+                            <li>BDT 5,000 - Basic Driving Course - Paid</li>
+                            <li>BDT 2,000 - Traffic Rules Course - Pending</li>
+                        </ul>
+                    </div>
                     <div class="dashboard-section">
                         <h2 class="section-title">Account Settings</h2>
                         <form id="profile-update-form">
