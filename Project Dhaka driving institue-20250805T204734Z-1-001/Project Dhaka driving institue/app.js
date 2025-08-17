@@ -193,13 +193,13 @@ document.addEventListener('DOMContentLoaded', () => {
             if (hasApprovedCourse) {
                 container.innerHTML = `
                     <div class="material-item">
-                        <a href="materials\DhakaDrive-Traffic-Signs.pdf" download="DhakaDrive-Traffic-Signs.pdf">BRTA Traffic Signs PDF</a>
+                        <a href="materials/DhakaDrive-Traffic-Signs.pdf" download="DhakaDrive-Traffic-Signs.pdf">BRTA Traffic Signs PDF</a>
                     </div>
                     <div class="material-item">
-                        <a href="materials\DhakaDrive-Vehicle-Checklist.pdf" download="DhakaDrive-Vehicle-Checklist.pdf">Pre-Drive Vehicle Checklist</a>
+                        <a href="materials/DhakaDrive-Vehicle-Checklist.pdf" download="DhakaDrive-Vehicle-Checklist.pdf">Pre-Drive Vehicle Checklist</a>
                     </div>
                     <div class="material-item">
-                        <a href="materials\DhakaDrive-BRTA-Guide.pdf" download="DhakaDrive-BRTA-Guide.pdf">Guide to BRTA Written Test</a>
+                        <a href="materials/DhakaDrive-BRTA-Guide.pdf" download="DhakaDrive-BRTA-Guide.pdf">Guide to BRTA Written Test</a>
                     </div>
                 `;
             } else {
