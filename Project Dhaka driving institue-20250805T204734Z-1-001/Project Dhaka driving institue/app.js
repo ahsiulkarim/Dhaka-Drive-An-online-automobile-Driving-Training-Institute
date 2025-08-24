@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const initDB = () => {
         if (!localStorage.getItem('dhakaDriveUsers')) {
-            const adminUser = { id: 1, name: 'Admin', email: 'admin@dhakadrive.com', mobile: '01000000000', password: 'admin', role: 'admin', accountStatus: 'active', document: null, address: '' };
+            const adminUser = { id: 1, name: 'Admin', email: 'admin@dhakadrive.com', mobile: '01000000000', password: 'admin', role: 'admin', accountStatus: 'active', document: null, address: '', isVerified: true };
             localStorage.setItem('dhakaDriveUsers', JSON.stringify([adminUser]));
         }
         const requiredKeys = ['dhakaDriveEnrollments', 'dhakaDriveNotifications', 'dhakaDriveMessages', 'dhakaDriveLoginHistory'];
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const password = document.getElementById('password').value;
             const users = getUsers();
             if (users.find(user => user.email === email)) { alert('An account with this email already exists.'); return; }
-            const newUser = { id: Date.now(), name, email, mobile, password, role: 'user', accountStatus: 'active', document: null, address: '' };
+            const newUser = { id: Date.now(), name, email, mobile, password, role: 'user', accountStatus: 'active', document: null, address: '', isVerified: false };
             users.push(newUser);
             saveUsers(users);
             alert('Account created successfully! Please log in.');
@@ -84,16 +84,72 @@ document.addEventListener('DOMContentLoaded', () => {
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
             const user = getUsers().find(u => u.email === email && u.password === password);
-            if (user) {
-                if (user.accountStatus === 'inactive') { alert('Your account has been deactivated. Please contact support.'); return; }
+            
+            if (!user) {
+                alert('Invalid email or password.');
+                return;
+            }
+
+            if (user.accountStatus === 'inactive') {
+                alert('Your account has been deactivated. Please contact support.');
+                return;
+            }
+
+            // OTP check for first-time login for non-admin users
+            if (user.role === 'user' && !user.isVerified) {
+                const otp = Math.floor(100000 + Math.random() * 900000).toString();
+                sessionStorage.setItem('otpVerification', JSON.stringify({ email: user.email, otp: otp }));
+                alert(`This is your first login. An OTP has been sent to your email for verification.\n\nYour OTP is: ${otp}`);
+                window.location.href = 'otp-verify.html';
+            } else {
+                // Normal login for verified users or admin
                 const loginHistory = JSON.parse(localStorage.getItem('dhakaDriveLoginHistory')) || [];
                 loginHistory.push({ userId: user.id, userName: user.name, userEmail: user.email, loginTime: new Date().toISOString() });
                 localStorage.setItem('dhakaDriveLoginHistory', JSON.stringify(loginHistory));
                 sessionStorage.setItem('loggedInUser', JSON.stringify(user));
                 alert(`Welcome back, ${user.name}!`);
                 window.location.href = user.role === 'admin' ? 'admin.html' : 'dashboard.html';
+            }
+        });
+    }
+
+    if (document.getElementById('otp-verify-form')) {
+        document.getElementById('otp-verify-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const enteredOtp = document.getElementById('otp').value;
+            const verificationData = JSON.parse(sessionStorage.getItem('otpVerification'));
+
+            if (!verificationData) {
+                alert('Verification session expired or invalid. Please try logging in again.');
+                window.location.href = 'login.html';
+                return;
+            }
+
+            if (enteredOtp === verificationData.otp) {
+                let users = getUsers();
+                const userIndex = users.findIndex(u => u.email === verificationData.email);
+
+                if (userIndex > -1) {
+                    users[userIndex].isVerified = true;
+                    saveUsers(users);
+                    const user = users[userIndex];
+                    
+                    const loginHistory = JSON.parse(localStorage.getItem('dhakaDriveLoginHistory')) || [];
+                    loginHistory.push({ userId: user.id, userName: user.name, userEmail: user.email, loginTime: new Date().toISOString() });
+                    localStorage.setItem('dhakaDriveLoginHistory', JSON.stringify(loginHistory));
+                    
+                    sessionStorage.setItem('loggedInUser', JSON.stringify(user));
+                    sessionStorage.removeItem('otpVerification');
+
+                    alert('Verification successful! Welcome.');
+                    window.location.href = 'dashboard.html';
+                } else {
+                    alert('An error occurred. User not found.');
+                    window.location.href = 'login.html';
+                }
             } else {
-                alert('Invalid email or password.');
+                alert('Invalid OTP. Please try again.');
             }
         });
     }
@@ -193,13 +249,13 @@ document.addEventListener('DOMContentLoaded', () => {
             if (hasApprovedCourse) {
                 container.innerHTML = `
                     <div class="material-item">
-                        <a href="materials/DhakaDrive-Traffic-Signs.pdf" download="DhakaDrive-Traffic-Signs.pdf">BRTA Traffic Signs PDF</a>
+                        <a href="materials\DhakaDrive-Traffic-Signs.pdf" download="DhakaDrive-Traffic-Signs.pdf">BRTA Traffic Signs PDF</a>
                     </div>
                     <div class="material-item">
-                        <a href="materials/DhakaDrive-Vehicle-Checklist.pdf" download="DhakaDrive-Vehicle-Checklist.pdf">Pre-Drive Vehicle Checklist</a>
+                        <a href="materials\DhakaDrive-Vehicle-Checklist.pdf" download="DhakaDrive-Vehicle-Checklist.pdf">Pre-Drive Vehicle Checklist</a>
                     </div>
                     <div class="material-item">
-                        <a href="materials/DhakaDrive-BRTA-Guide.pdf" download="DhakaDrive-BRTA-Guide.pdf">Guide to BRTA Written Test</a>
+                        <a href="materials\DhakaDrive-BRTA-Guide.pdf" download="DhakaDrive-BRTA-Guide.pdf">Guide to BRTA Written Test</a>
                     </div>
                 `;
             } else {
